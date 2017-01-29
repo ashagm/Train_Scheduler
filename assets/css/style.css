@@ -1,0 +1,6 @@
+body{
+	margin: 0 auto;
+    background-position: cover;
+    background: url('./assets/images/train-bg-1.jpg') no-repeat;
+	background-size: 100%;
+}
