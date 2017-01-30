@@ -1,6 +1,47 @@
 body{
 	margin: 0 auto;
-    background-position: cover;
-    background: url('./assets/images/train-bg-1.jpg') no-repeat;
-	background-size: 100%;
+	/*background-image: url("../images/train-bg-1.jpg");*/
+	background-image: url('../images/train-bg-1.jpg');
+ 	background-size:  cover;  
+	background-repeat: no-repeat;
+	/*color: #FFA500;*/
+	/*font-size: 25px;
+	/*font-family: 'Joti One','Caesar Dressing', 'Diplomata', 'Ewert',  cursive;*/
 }
+
+ .header{
+ 	padding: 30px 10px;
+ 	background-color: #000000;
+ 	opacity: 0.6;
+ 	color: #ffffff;
+ 	margin: 20px;
+ 	border-radius: 20px;
+ }
+
+ #train-table{
+ 	margin: 0px 20px;
+ 	background-color: #000000;
+ 	opacity: 0.7;
+ 	color: #ffffff;
+ 	font-size: 16px;
+ 	border-radius: 20px;
+
+ }
+
+ #addTrainDiv{
+ 	background-color: #000000;
+ 	color: #ffffff;
+ 	padding: 10px;
+ 	border: 2px solid #ffffff;
+ }
+
+ #btn-login-train,
+ #btn-bringup-add-train{
+ 	text-align: center;
+ 	padding: 20px;
+ 	font-size: 16px;
+ 	background-color: red;
+ 	color: #ffffff;
+ 	margin: 20px;
+ 	border-radius: 20px;
+ }

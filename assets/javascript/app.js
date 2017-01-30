@@ -13,7 +13,11 @@
   var database = firebase.database();
   var trainsRef = database.ref("/trains"); 
 
+  var isLoggedin = false;
+
 $(document).ready(function(){
+
+  $('#btn-bringup-add-train').hide();
 
   $('#add-train-btn').on('click', function(){
 
@@ -88,4 +92,48 @@ $(document).ready(function(){
      
      });
 
+
+    $('#btn-login-train').on('click', function(){
+
+      // https://trainscheduler-ea3a8.firebaseapp.com/__/auth/handler
+      // Client ID
+      // d1a2cf47e2a32528dec3
+      //     Client Secret
+      // 6f4e00fa46ab6b8070b8b8abef446d62b9d06106
+
+        var githubProvider = new firebase.auth.GithubAuthProvider();
+        console.log(githubProvider);
+
+        firebase.auth().signInWithPopup(githubProvider).then(function(result) {
+        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        var token = result.credential.accessToken;
+
+        console.log("GitHub Access Token = ", token);
+        // The signed-in user info.
+        var user = result.user;
+        console.log("GitHub Access user = ", user);
+
+        isLoggedin = true;
+        $('#btn-login-train').text("You are now logged into Github!");
+        $('#btn-login-train').prop('disabled', true);
+        $('#btn-bringup-add-train').show();
+    
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        console.log(errorCode);
+
+        var errorMessage = error.message;
+        console.log(errorMessage);
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      });
+    });
+
+    $('#btn-bringup-add-train').on('click', function(){
+        $('#addTrainModal').modal('show');
+    });
 });
