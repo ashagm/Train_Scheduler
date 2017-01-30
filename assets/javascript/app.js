@@ -16,10 +16,10 @@
 
 $(document).ready(function(){
 
-  $('#btn-bringup-add-train').hide();
-
+  // $('#btn-bringup-add-train').hide();
+  $('#btn-bringup-add-train').prop('disabled', true);
   $('#add-train-btn').on('click', function(){
-
+    event.preventDefault();
     var train_name = $('#train-name-input').val().trim();
     var train_destination = $('#train-destination-input').val().trim();
     var train_start_time = $('#first-train-input').val().trim();
@@ -92,18 +92,20 @@ $(document).ready(function(){
         "<td id='frequency'>" + trainObj.frequency + '</td>' +
         "<td id='nexttrain'>" + mmntNextArrival.format("h:mm a") + '</td>' +              
         "<td id='minutesaway'>" + minutes_away + '</td>' +            
-        "<td class='trash' id='delete'><a href='#''><span class='glyphicon glyphicon-trash'></span></a>" + '</td></tr>');     
+        "<td class='trash' id='delete'><a href='#''><span class='glyphicon glyphicon-trash'></span></a>" + '</td>' +     
+        "<td class='pencil' id='edit'><a href='#''><span class='glyphicon glyphicon-pencil'></span></a>" + '</td></tr>');     
      });
 
 
       $('#train-table').on('click', '.trash', function(){
-         var dataKey = $(this).parent().data('key');
-         console.log(dataKey);
+        event.preventDefault();
+        var dataKey = $(this).parent().data('key');
+        console.log(dataKey);
 
-         var removeItem = trainsRef.child(dataKey).remove();
-         console.log(removeItem);
+        var removeItem = trainsRef.child(dataKey).remove();
+        console.log(removeItem);
 
-         $(this).parent().remove();
+        $(this).parent().remove();
       })
 
       trainsRef.on('child_removed', function(childSnapshot){
@@ -112,6 +114,7 @@ $(document).ready(function(){
 
 
       $('#btn-login-train').on('click', function(){
+        event.preventDefault();
 
         // https://trainscheduler-ea3a8.firebaseapp.com/__/auth/handler
         // Client ID
@@ -133,7 +136,7 @@ $(document).ready(function(){
 
           $('#btn-login-train').text("You are now logged into Github!");
           $('#btn-login-train').prop('disabled', true);
-          $('#btn-bringup-add-train').show();
+          $('#btn-bringup-add-train').prop('disabled', false);
       
         }).catch(function(error) {
           // Handle Errors here.
@@ -151,6 +154,7 @@ $(document).ready(function(){
       });
 
       $('#btn-bringup-add-train').on('click', function(){
+          event.preventDefault();
           $('#addTrainModal').modal('show');
       });
 });
