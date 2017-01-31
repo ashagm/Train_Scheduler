@@ -28,6 +28,12 @@ body{
 
  }
 
+ #train-table tr:hover{
+	background-color: #000000;
+ 	opacity: 0.7;
+ 	color: #ffffff;
+ }
+
  #addTrainDiv{
  	background-color: #000000;
  	color: #ffffff;
