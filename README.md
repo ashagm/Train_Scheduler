@@ -6,5 +6,8 @@ A train schedule application that incorporates Firebase to host arrival and depa
 Firebase Authentication with Github
 Delete items from Firebase
 
+1. Login to Github to Add trains. 
+2. Delete rows by clicking on trash can icon 
+3. Edit row by clicking inline on column name/destination and arrival time, then click Edit icon.
 
 https://ashagm.github.io/Train_Scheduler/
